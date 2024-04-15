@@ -1,0 +1,16 @@
+Impresiones iniciales:
+    El problema no parece complicado, algun malentendido del enunciado que se aclara viendo como es el archivo primer problema.
+    No estoy muy seguro como aplicar los temas vistos en clase a este tipo de problema o al codigo.
+
+Idea de resolucion:
+    Crear todas los lavados posibles y probar todas las combinaciones para ver cual tarda menos
+
+Cambios realizados durante la resolucion:
+    Probar todos los resultados posibles tarda demasiado tiempo y genera muchos duplicados.
+    Buscar la solucion usando siempre como base (primer lavado a incluir) alguno de los lavados mas largos 
+    Para mejorar la velocidad de resolucion dismuir la lista lavados en la funcion combination_filler,
+    con esto no se buscaran todas la soluciones pero mejora notablemate la velocidad
+
+Comentarios finales:
+    El tp resulto mas dificil de lo esperado, creo que mi solucion mantiene un balance entre velocidad y resultados
+    pero me costo aplicar los temas de la teorica en la resulucion.
