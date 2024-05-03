@@ -1,0 +1,7 @@
+Impresiones iniciales:
+    La apliacion de prendas e incopatibilidades hacen que el modelo anterior no sirva por el tiempo que demora en correr
+
+Idea de resolucion:
+    crear los lavados a pratir de inforamcion que se tiene de lavados anteriores,
+     ejemplo si lavado_1 usa a la prenda 12 esta no podra ser usada en el lavado_2
+
