@@ -83,6 +83,7 @@ def lavados_creator(prendas):
     for prenda in prendas:
         lavados.append(Lavado(indices = [prenda.index],max_tiempo_requerido = prenda.tiempo_requerido, incompatible=prenda.incompatible,lavado=prenda.index))
     lavados_copy = lavados[:]
+    lavados_copy.sort(key=lambda lavado: lavado.max_tiempo_requerido, reverse=True)
     for i in lavados_copy:
         lavado = i
         for j in lavados_copy:

@@ -5,3 +5,5 @@ Idea de resolucion:
     crear los lavados a pratir de inforamcion que se tiene de lavados anteriores,
      ejemplo si lavado_1 usa a la prenda 12 esta no podra ser usada en el lavado_2
 
+Cambios realizados durante la resolucion:
+    Antes de hacer los lavados los organizo de mayor a menor tiempo, para que se agrupen primero los lavados que demoran mas tiempo
