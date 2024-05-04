@@ -7,3 +7,6 @@ Idea de resolucion:
 
 Cambios realizados durante la resolucion:
     Antes de hacer los lavados los organizo de mayor a menor tiempo, para que se agrupen primero los lavados que demoran mas tiempo
+
+    Agregar una condicion de de que cree buscando lavados con mayor cantidad de incompatibles mejoro ligeramente el resultado, 
+    pero no creo que la solucion sea poe este lado, tengo que buscar que no queden tantos lavados solos

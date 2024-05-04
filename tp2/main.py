@@ -80,13 +80,17 @@ def lavados_creator(prendas):
     global max_lavado_len
     global cant_prendas
     lavados = []
+    longest_incompatibles = 0
     for prenda in prendas:
+        if len(prenda.incompatible) > longest_incompatibles:
+            longest_incompatibles = len(prenda.incompatible) 
         lavados.append(Lavado(indices = [prenda.index],max_tiempo_requerido = prenda.tiempo_requerido, incompatible=prenda.incompatible,lavado=prenda.index))
     lavados_copy = lavados[:]
     lavados_copy.sort(key=lambda lavado: lavado.max_tiempo_requerido, reverse=True)
     for i in lavados_copy:
         lavado = i
-        for j in lavados_copy:
+        if len(lavado.incompatible) > 5:
+            for j in lavados_copy:
                 if check_valid_lavado(lavado, j):
                     lavado = combine_lavados(lavado, j)
                     lavados_copy.remove(j)
@@ -95,8 +99,8 @@ def lavados_creator(prendas):
                             max_lavado_len = len(lavado.indices)
                         print(lavado.indices)
                         print(lavado.max_tiempo_requerido)
-        lavados_copy.remove(i)
-        lavados.append(lavado)
+            lavados_copy.remove(i)
+            lavados.append(lavado)
     print(max_lavado_len)
     print(len(lavados))
     return lavados
