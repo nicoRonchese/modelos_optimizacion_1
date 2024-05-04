@@ -185,9 +185,11 @@ def main():
         print("prenda:",prenda.index)
         print("Tiempo requerido:", prenda.tiempo_requerido)
         print("Incompatible:", prenda.incompatible)
-
-    lavados = lavados_creator(prendas_manager.prendas)
-    combination = combiantion_creator(lavados)
+    tiempo = 10000
+    while  tiempo > 550:
+        lavados = lavados_creator(prendas_manager.prendas)
+        combination = combiantion_creator(lavados)
+        tiempo = combination[0].tiempo_requerido
     print("tiempo:",combination[0].tiempo_requerido)
     for i in combination[0].lavados:
         print(i.indices)
