@@ -86,18 +86,16 @@ def lavados_creator(prendas):
             longest_incompatibles = len(prenda.incompatible) 
         lavados.append(Lavado(indices = [prenda.index],max_tiempo_requerido = prenda.tiempo_requerido, incompatible=prenda.incompatible,lavado=prenda.index))
     lavados_copy = lavados[:]
-    while len(lavados_copy) > 26:
-        lavados_copy = lavados[:]
-        lavados2 = lavados[:]
+    n = 0
+    lavados_copy = lavados[:]
+    lavados2 = []
+    while len(lavados_copy) > 0:
+        
         lavados_copy.sort(key=lambda lavado: lavado.max_tiempo_requerido, reverse=True)
-        random_element = random.choice(lavados_copy)
-        lavados_copy.remove(random_element)
-        lavados_copy.insert(0, random_element)
-        for i in lavados_copy:
-            lavado = i
-            if len(i.incompatible) > 2:
-                for j in lavados_copy:
-                    if check_valid_lavado(lavado, j):
+        lavado = random.choice(lavados_copy)
+        lavados_copy.remove(lavado)
+        for j in lavados_copy:
+            if check_valid_lavado(lavado, j):
                         lavado = combine_lavados(lavado, j)
                         lavados_copy.remove(j)
                         if lavado not in lavados2:
@@ -105,8 +103,9 @@ def lavados_creator(prendas):
                                 max_lavado_len = len(lavado.indices)
                             print(lavado.indices)
                             print(lavado.max_tiempo_requerido)
-            lavados_copy.remove(i)
-            lavados2.append(lavado)
+        lavados2.append(lavado)
+        n+=1
+    lavados2 = list(reversed(lavados2))
     for i in lavados2:
         lavados.append(i)
     print(max_lavado_len)
