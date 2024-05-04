@@ -10,3 +10,8 @@ Cambios realizados durante la resolucion:
 
     Agregar una condicion de de que cree buscando lavados con mayor cantidad de incompatibles mejoro ligeramente el resultado, 
     pero no creo que la solucion sea poe este lado, tengo que buscar que no queden tantos lavados solos
+
+    Agregue un randomizador para que cambie el primer elemento de que es sobre el que buscan la solucion, nose si sera una solucion
+    permanente pero por ahora mejoro la solucion
+
+    Ahora el sistema busca que queden pocos lavados solos

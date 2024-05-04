@@ -86,21 +86,29 @@ def lavados_creator(prendas):
             longest_incompatibles = len(prenda.incompatible) 
         lavados.append(Lavado(indices = [prenda.index],max_tiempo_requerido = prenda.tiempo_requerido, incompatible=prenda.incompatible,lavado=prenda.index))
     lavados_copy = lavados[:]
-    lavados_copy.sort(key=lambda lavado: lavado.max_tiempo_requerido, reverse=True)
-    for i in lavados_copy:
-        lavado = i
-        if len(lavado.incompatible) > 5:
-            for j in lavados_copy:
-                if check_valid_lavado(lavado, j):
-                    lavado = combine_lavados(lavado, j)
-                    lavados_copy.remove(j)
-                    if lavado not in lavados:
-                        if len(lavado.indices) > max_lavado_len:
-                            max_lavado_len = len(lavado.indices)
-                        print(lavado.indices)
-                        print(lavado.max_tiempo_requerido)
+    while len(lavados_copy) > 26:
+        lavados_copy = lavados[:]
+        lavados2 = lavados[:]
+        lavados_copy.sort(key=lambda lavado: lavado.max_tiempo_requerido, reverse=True)
+        random_element = random.choice(lavados_copy)
+        lavados_copy.remove(random_element)
+        lavados_copy.insert(0, random_element)
+        for i in lavados_copy:
+            lavado = i
+            if len(i.incompatible) > 2:
+                for j in lavados_copy:
+                    if check_valid_lavado(lavado, j):
+                        lavado = combine_lavados(lavado, j)
+                        lavados_copy.remove(j)
+                        if lavado not in lavados2:
+                            if len(lavado.indices) > max_lavado_len:
+                                max_lavado_len = len(lavado.indices)
+                            print(lavado.indices)
+                            print(lavado.max_tiempo_requerido)
             lavados_copy.remove(i)
-            lavados.append(lavado)
+            lavados2.append(lavado)
+    for i in lavados2:
+        lavados.append(i)
     print(max_lavado_len)
     print(len(lavados))
     return lavados
