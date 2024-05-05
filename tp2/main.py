@@ -92,7 +92,7 @@ def lavados_creator(prendas):
     while len(lavados_copy) > 0:
         
         lavados_copy.sort(key=lambda lavado: lavado.max_tiempo_requerido, reverse=True)
-        top_lavado_incompatible = lavados_copy[:20]
+        top_lavado_incompatible = lavados_copy[:5]
         top_lavado_incompatible.sort(key=lambda lavado: len(lavado.incompatible), reverse=True)
         lavado = random.choice(top_lavado_incompatible)
         lavados_copy.remove(lavado)
@@ -103,15 +103,15 @@ def lavados_creator(prendas):
                         if lavado not in lavados2:
                             if len(lavado.indices) > max_lavado_len:
                                 max_lavado_len = len(lavado.indices)
-                            print(lavado.indices)
-                            print(lavado.max_tiempo_requerido)
+                            #print(lavado.indices)
+                            #print(lavado.max_tiempo_requerido)
         lavados2.append(lavado)
         n+=1
     lavados2 = list(reversed(lavados2))
     for i in lavados2:
         lavados.append(i)
     print(max_lavado_len)
-    print(len(lavados))
+    print(len(lavados)-385)
     return lavados
 
 class Combination:
@@ -151,8 +151,8 @@ def combination_filler(best_combination,combination,lavados):
         new_combination = add_to_combination(combination,i)
         if len(new_combination.indices)== cant_prendas:
             if new_combination.tiempo_requerido < best_combination[0].tiempo_requerido:
-                print(new_combination.tiempo_requerido)
-                print(len(new_combination.lavados))
+                #print(new_combination.tiempo_requerido)
+                #print(len(new_combination.lavados))
                 best_combination[0] = new_combination
         elif new_combination.tiempo_requerido > best_combination[0].tiempo_requerido:
             break
@@ -169,7 +169,7 @@ def combiantion_creator(lavados):
         if len(i.indices) >= len(lavados[0].indices): 
             combination = Combination(indices=i.indices,tiempo_requerido=i.max_tiempo_requerido,lavados=[i])
             pop_item = lavados.pop(0)
-            print(pop_item.indices)
+            #print(pop_item.indices)
             combination_filler(best_combination= best_combination,combination=combination,lavados=lavados)
     return best_combination
 
@@ -188,11 +188,11 @@ def main():
         print("Tiempo requerido:", prenda.tiempo_requerido)
         print("Incompatible:", prenda.incompatible)
     tiempo = 10000
-    while  tiempo > 510:
+    while  tiempo > 500:
         lavados = lavados_creator(prendas_manager.prendas)
         combination = combiantion_creator(lavados)
         tiempo = combination[0].tiempo_requerido
-    print("tiempo:",combination[0].tiempo_requerido)
+        print("tiempo:",combination[0].tiempo_requerido)
     for i in combination[0].lavados:
         print(i.indices)
     write_file(combination[0])

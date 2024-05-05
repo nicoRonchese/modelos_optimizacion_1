@@ -19,7 +19,7 @@ Cambios realizados durante la resolucion:
     Sobre la lista ordenada (de mayor a menor peso) ahora en lugar de cambiar solo el primer elemento se cambia cada ves que se
     genera un lavado nuevo. Lo malo de esto es que permite una mayor variacion de resultados, pero en promedio resultan mejor que el caso anterior
 
-    Agrego un ciclo para que continue hasta encontrar un solucion mejor a lo que yo ingrese, en este caso 510
+    Agrego un ciclo para que continue hasta encontrar un solucion mejor a lo que yo ingrese, en este caso 500
 
-    Agrego una nueva lista que dentro del el top 20 en tiempo los ordena por el que tiene mas incompatibles, de esta ahora se selecciona un elemento
+    Agrego una nueva lista que dentro del el top 5 en tiempo los ordena por el que tiene mas incompatibles, de esta ahora se selecciona un elemento
     para comenzar
