@@ -92,7 +92,9 @@ def lavados_creator(prendas):
     while len(lavados_copy) > 0:
         
         lavados_copy.sort(key=lambda lavado: lavado.max_tiempo_requerido, reverse=True)
-        lavado = random.choice(lavados_copy)
+        top_lavado_incompatible = lavados_copy[:20]
+        top_lavado_incompatible.sort(key=lambda lavado: len(lavado.incompatible), reverse=True)
+        lavado = random.choice(top_lavado_incompatible)
         lavados_copy.remove(lavado)
         for j in lavados_copy:
             if check_valid_lavado(lavado, j):
@@ -186,7 +188,7 @@ def main():
         print("Tiempo requerido:", prenda.tiempo_requerido)
         print("Incompatible:", prenda.incompatible)
     tiempo = 10000
-    while  tiempo > 550:
+    while  tiempo > 510:
         lavados = lavados_creator(prendas_manager.prendas)
         combination = combiantion_creator(lavados)
         tiempo = combination[0].tiempo_requerido
