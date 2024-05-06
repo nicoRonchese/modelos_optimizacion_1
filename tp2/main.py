@@ -140,11 +140,7 @@ def combination_filler(best_combination,combination,lavados):
     # indices_to_exclude = combination.indices
     # lavados = [lavado for lavado in lavados if not any(index in indices_to_exclude for index in lavado.indices)]
     indices_to_exclude = combination.indices
-
-# Filter out lavados based on the comparison between lavado.lavado and indices_to_exclude
     lavados = [lavado for lavado in lavados if lavado.lavado not in indices_to_exclude]
-
-# Sort lavados based on the number of indices each Lavado object has
     lavados.sort(key=lambda lavado: len(lavado.indices), reverse=True)
     lavados2 = lavados[:1]
     for i in lavados2:
@@ -188,7 +184,7 @@ def main():
         print("Tiempo requerido:", prenda.tiempo_requerido)
         print("Incompatible:", prenda.incompatible)
     tiempo = 10000
-    while  tiempo > 500:
+    while  tiempo > 490:
         lavados = lavados_creator(prendas_manager.prendas)
         combination = combiantion_creator(lavados)
         tiempo = combination[0].tiempo_requerido
