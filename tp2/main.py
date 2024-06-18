@@ -93,7 +93,7 @@ def lavados_creator(prendas):
         
         lavados_copy.sort(key=lambda lavado: lavado.max_tiempo_requerido, reverse=True)
         top_lavado_incompatible = lavados_copy[:5]
-        top_lavado_incompatible.sort(key=lambda lavado: len(lavado.incompatible), reverse=True)
+        top_lavado_incompatible.sort(key=lambda lavado: len(lavado.incompatible))
         lavado = random.choice(top_lavado_incompatible)
         lavados_copy.remove(lavado)
         for j in lavados_copy:
